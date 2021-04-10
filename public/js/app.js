@@ -1,4 +1,3 @@
-"use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -9,7 +8,18 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const container = document.getElementById("app");
-const pokemons = 100;
+const pokemons = 10;
+const showPokemon = (pokemon) => {
+    let output = `
+            <div class="card">
+                <span class="card--id">#${pokemon.id}</span>
+                <img class="card--image" src=${pokemon.image} alt=${pokemon.name} />
+                <h1 class="card--name">${pokemon.name}</h1>
+                <span class="card--details">${pokemon.type}</span>
+            </div>
+        `;
+    container.innerHTML += output;
+};
 const fetchData = () => {
     for (let i = 1; i <= pokemons; i++) {
         getPokemon(i);
@@ -29,15 +39,5 @@ const getPokemon = (id) => __awaiter(void 0, void 0, void 0, function* () {
     };
     showPokemon(transformedPokemon);
 });
-const showPokemon = (pokemon) => {
-    let output = `
-          <div class="card">
-              <span class="card--id">#${pokemon.id}</span>
-              <img class="card--image" src=${pokemon.image} alt=${pokemon.name} />
-              <h1 class="card--name">${pokemon.name}</h1>
-              <span class="card--details">${pokemon.type}</span>
-          </div>
-      `;
-    container.innerHTML += output;
-};
 fetchData();
+export {};
